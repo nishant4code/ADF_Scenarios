@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "dfADFPracticalImplimentation"
+		},
+		"LS_AzureBlob_connectionString": {
+			"value": ""
+		},
+		"LS_AzureSqlDB_dbsqlserver1009_trial_connectionString": {
+			"value": ""
+		},
+		"LS_OnPrem_SQLServer_connectionString": {
+			"value": ""
+		},
+		"LS_REST_API_reqres_properties_typeProperties_url": {
+			"value": "https://reqres.in/api/users"
+		},
+		"IR-SelfHosted-OnPremSQLSERVER_properties_typeProperties_linkedInfo_resourceId": {
+			"value": "/subscriptions/c46f5db6-1385-41ab-8f9d-9de8426d13f0/resourcegroups/rg_demo/providers/Microsoft.DataFactory/factories/dfADF4Demo/integrationruntimes/IRSQLServer"
+		}
+	}
+}

@@ -1,0 +1,117 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "dfADFPracticalImplimentation"
+		},
+		"LS_AzureBlob_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_AzureBlob'"
+		},
+		"LS_AzureSqlDB_dbsqlserver1009_trial_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_AzureSqlDB_dbsqlserver1009_trial'"
+		},
+		"LS_OnPrem_SQLServer_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_OnPrem_SQLServer'"
+		},
+		"LS_REST_API_reqres_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://reqres.in/api/users"
+		},
+		"IR-SelfHosted-OnPremSQLSERVER_properties_typeProperties_linkedInfo_resourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/c46f5db6-1385-41ab-8f9d-9de8426d13f0/resourcegroups/rg_demo/providers/Microsoft.DataFactory/factories/dfADF4Demo/integrationruntimes/IRSQLServer"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "dfADFPracticalImplimentation_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_AzureBlob_connectionString": {
+						"value": "[parameters('LS_AzureBlob_connectionString')]"
+					},
+					"LS_AzureSqlDB_dbsqlserver1009_trial_connectionString": {
+						"value": "[parameters('LS_AzureSqlDB_dbsqlserver1009_trial_connectionString')]"
+					},
+					"LS_REST_API_reqres_properties_typeProperties_url": {
+						"value": "[parameters('LS_REST_API_reqres_properties_typeProperties_url')]"
+					},
+					"IR-SelfHosted-OnPremSQLSERVER_properties_typeProperties_linkedInfo_resourceId": {
+						"value": "[parameters('IR-SelfHosted-OnPremSQLSERVER_properties_typeProperties_linkedInfo_resourceId')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "dfADFPracticalImplimentation_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_OnPrem_SQLServer_connectionString": {
+						"value": "[parameters('LS_OnPrem_SQLServer_connectionString')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'dfADFPracticalImplimentation_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "dfADFPracticalImplimentation_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'dfADFPracticalImplimentation_ArmTemplate_1')]"
+			]
+		}
+	]
+}
