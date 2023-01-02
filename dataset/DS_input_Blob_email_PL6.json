@@ -1,0 +1,33 @@
+{
+	"name": "DS_input_Blob_email_PL6",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AzureBlob",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "input/azureBlob"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "email.csv",
+				"folderPath": "input_csv_email",
+				"container": "fs-demo"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "email",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,40 @@
+{
+	"name": "PL15_RunPipeline_anotherADF",
+	"properties": {
+		"activities": [
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": {
+						"value": "https://management.azure.com/subscriptions/c46f5db6-1385-41ab-8f9d-9de8426d13f0/resourceGroups/rg_demo/providers/Microsoft.DataFactory/factories/dfADF4Practice/pipelines/PL_RTS15_GetErrorMessageOfFailedParallelActivity/createRun?api-version=2017-03-01-preview",
+						"type": "Expression"
+					},
+					"method": "POST",
+					"authentication": {
+						"type": "MSI",
+						"resource": {
+							"value": "https://management.azure.com/",
+							"type": "Expression"
+						}
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "RTS"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-01-02T21:03:53Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

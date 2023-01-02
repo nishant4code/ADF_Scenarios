@@ -1,0 +1,33 @@
+{
+	"name": "ScheduledTrigger1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "PL4_LogPipelineExecutionDetailToSQLServer",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-12-23T12:54:00",
+				"endTime": "2022-12-24T12:54:00",
+				"timeZone": "India Standard Time",
+				"schedule": {
+					"minutes": [
+						28
+					],
+					"hours": [
+						18
+					]
+				}
+			}
+		}
+	}
+}

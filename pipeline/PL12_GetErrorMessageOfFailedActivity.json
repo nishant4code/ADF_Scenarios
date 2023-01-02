@@ -1,0 +1,89 @@
+{
+	"name": "PL12_GetErrorMessageOfFailedActivity",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "var1",
+					"value": "sfrgfdgdfa"
+				}
+			},
+			{
+				"name": "Set variable2",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Set variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "var1",
+					"value": "45r43654"
+				}
+			},
+			{
+				"name": "Set variable3",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Set variable2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "var1",
+					"value": {
+						"value": "@int('gfdgfdgsdf')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable4",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Set variable3",
+						"dependencyConditions": [
+							"Skipped",
+							"Failed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "errorMsg",
+					"value": {
+						"value": "@concat(activity('Set variable1').Error?.Message,\nactivity('Set variable2')?.Error?.Message, \nactivity('Set variable3')?.Error?.Message)",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"var1": {
+				"type": "String"
+			},
+			"errorMsg": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "RTS"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-01-02T21:03:53Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

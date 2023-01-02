@@ -1,0 +1,67 @@
+{
+	"name": "PL13_Execute_SP_with_outputParameter",
+	"properties": {
+		"activities": [
+			{
+				"name": "Lookup1",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": {
+							"value": "declare @totalCount int\nexecute sp_totalEmployee 'Data Engineer', @totalCount output\nselect @totalCount as TotalEmployees",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_onPremSQLServer_PL8",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Lookup1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "totalEmployees",
+					"value": {
+						"value": "@string(activity('Lookup1').output.value[0]['TotalEmployees'])",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"totalEmployees": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "RTS"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-01-02T21:03:53Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

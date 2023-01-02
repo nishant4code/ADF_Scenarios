@@ -1,0 +1,48 @@
+{
+	"name": "DS_AzureSqlDB_tbl_employeeSCD2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AzureSqlDB_dbsqlserver1009_trial",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS_SCDType2"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "surrKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "empID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "empName",
+				"type": "varchar"
+			},
+			{
+				"name": "gender",
+				"type": "varchar"
+			},
+			{
+				"name": "country",
+				"type": "varchar"
+			},
+			{
+				"name": "isActive",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_employeeSCD2"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

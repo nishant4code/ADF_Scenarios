@@ -1,0 +1,35 @@
+{
+	"name": "PL10_RoundDecimalNumber",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set variable Whole Number",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "roundOffNumber",
+					"value": {
+						"value": "@string(div(float(split(string(mul(float(variables('decimalNumber')), 100)),'.')[0]),100))",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"decimalNumber": {
+				"type": "String",
+				"defaultValue": "10656.8845573673"
+			},
+			"roundOffNumber": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "RTS"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-01-02T21:03:54Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

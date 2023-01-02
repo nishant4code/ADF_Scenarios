@@ -1,0 +1,16 @@
+{
+	"name": "DS_onPremSQLServer_PL8",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_OnPrem_SQLServer",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "input/onpremSQLServer"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,27 @@
+{
+	"name": "DS_REST_API_PL15",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_REST_API_reqres",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"getPage": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "input"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": {
+				"value": "@dataset().getPage",
+				"type": "Expression"
+			}
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

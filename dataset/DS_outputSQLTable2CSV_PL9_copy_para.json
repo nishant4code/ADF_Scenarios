@@ -1,0 +1,45 @@
+{
+	"name": "DS_outputSQLTable2CSV_PL9_copy_para",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AzureBlob",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"fileNameDS": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "output/azureBlobOutput"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().fileNameDS",
+					"type": "Expression"
+				},
+				"folderPath": "outputData/outputSQLTable2CSV",
+				"container": "fs-demo"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "id",
+				"type": "String"
+			},
+			{
+				"name": "refreshed",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

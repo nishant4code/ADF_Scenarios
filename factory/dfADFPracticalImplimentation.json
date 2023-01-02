@@ -1,0 +1,9 @@
+{
+	"name": "dfADFPracticalImplimentation",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "06954a4c-4ece-40a5-8ce5-eada3182c180",
+		"tenantId": "7cdaaa06-a24e-4193-aa2f-45ead81573ac"
+	}
+}

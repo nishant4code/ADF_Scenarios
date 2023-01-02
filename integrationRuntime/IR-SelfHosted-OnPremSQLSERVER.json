@@ -1,0 +1,12 @@
+{
+	"name": "IR-SelfHosted-OnPremSQLSERVER",
+	"properties": {
+		"type": "SelfHosted",
+		"typeProperties": {
+			"linkedInfo": {
+				"resourceId": "/subscriptions/c46f5db6-1385-41ab-8f9d-9de8426d13f0/resourcegroups/rg_demo/providers/Microsoft.DataFactory/factories/dfADF4Demo/integrationruntimes/IRSQLServer",
+				"authorizationType": "Rbac"
+			}
+		}
+	}
+}

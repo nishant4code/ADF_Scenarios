@@ -1,0 +1,41 @@
+{
+	"name": "DS_BlobSCDType1_input_csv_employee",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AzureBlob",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS_SCDType1"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "employee.csv",
+				"folderPath": "input_csv",
+				"container": "fs-demo"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "empid",
+				"type": "String"
+			},
+			{
+				"name": " empname",
+				"type": "String"
+			},
+			{
+				"name": " depid",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

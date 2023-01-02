@@ -1,0 +1,28 @@
+{
+	"name": "DS_OnPrem_SQLServer_employeeDB_para_PL8",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_OnPrem_SQLServer",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tableName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "input/onpremSQLServer"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().tableName",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

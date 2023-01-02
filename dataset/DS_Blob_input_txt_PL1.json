@@ -1,0 +1,22 @@
+{
+	"name": "DS_Blob_input_txt_PL1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AzureBlob",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "input/azureBlob"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "input",
+				"container": "fs-demo"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

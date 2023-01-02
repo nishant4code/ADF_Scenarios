@@ -1,0 +1,35 @@
+{
+	"name": "DS_AzureSQL_SCD1_tbl_employee",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AzureSqlDB_dbsqlserver1009_trial",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DS_SCDType1"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "empId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "empName",
+				"type": "varchar"
+			},
+			{
+				"name": "deptId",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_employee"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
